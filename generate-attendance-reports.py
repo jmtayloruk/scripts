@@ -2,7 +2,7 @@
     ####################################################################################
     ######## Script to generate attendance report from Zoom 'participants' logs ########
     ####################################################################################
-    v2.0
+    Do please drop me an email to let me know if you find this script useful (or have any additions to contribute):
     jonathan.taylor at glasgow.ac.uk
         -- Jonathan Taylor, Glasgow University, October 2020
 
