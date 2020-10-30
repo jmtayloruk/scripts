@@ -59,9 +59,13 @@ import numpy as np
 import csv, datetime, glob, sys
 
 def StaffEmail(email):
-    # Returns True if this looks like a student email.
-    # In practice we check for what we know staff emails look like, and return false if we see that.
-    # knownDemonstratorEmails can contain a manually-curated list of demonstrator emails that would be otherwise indistinguishable from undergraduate email addresses,
+    # Returns True if this looks like a staff email, so this can be excluded from the attendance report.
+    # If staff emails are indistinguishable in format from student emails, or you don't want to bother with this,
+    # just return False from this function. In that case, the worst that will happen is you'll get attendance reports
+    # for staff/demonstrators as well.
+    # If you can't distinguish some or all demonstrator emails, but want to enter them manually, then
+    # knownDemonstratorEmails can contain a manually-curated list of demonstrator emails 
+    # that would be otherwise indistinguishable from undergraduate email addresses.
     knownDemonstratorEmails = []
     return ("@glasgow.ac.uk" in email) or           \
            ("@research.glasgow.ac.uk" in email) or  \
@@ -70,6 +74,8 @@ def StaffEmail(email):
            (email in knownDemonstratorEmails)
 
 def UniversityStudentEmail(email):
+    # Returns True if this looks like an official university student email, as opposed to a personal email address.
+    # If you can't specifically distinguish student email addresses from staff, just return True for all university email addresses.
     return "@student.gla.ac.uk" in email
 
 def date_from_isoweek(iso_year, iso_weeknumber, iso_weekday):
